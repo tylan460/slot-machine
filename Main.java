@@ -36,13 +36,15 @@ public class Main {
             }
             System.out.printf("Current balance: %d\n", balance);
 
-            while (bet <= 0) {
+            while (bet <= 0 || bet > balance) {
 
                 System.out.print("Place your bet amount: ");
                 bet = scanner.nextInt();
                 scanner.nextLine();
                 if (bet <= 0) {
-                    System.out.println("Your Bet cannot be 0 or less");
+                    System.out.println("Your Bet cannot be 0 or less.");
+                } else if (bet > balance) {
+                    System.out.println("Your bet cannot be greater than balance.");
                 }
             }
 
