@@ -19,7 +19,7 @@ public class Main {
         int cherryCount = 0;
         int lemonCount = 0;
         int watermelonCount = 0;
-        String decision;
+        String decision = "";
 
         draw_stars(1);
         System.out.println("    Welcome to Java Slots");
@@ -31,6 +31,8 @@ public class Main {
             if (balance == 0) {
                 System.out.println("Insufficient funds, cannot continue\nGOODBYE!");
                 play = false;
+                break;
+
             }
             System.out.printf("Current balance: %d\n", balance);
 
@@ -118,29 +120,30 @@ public class Main {
                 System.out.println("Sorry you lost this round");
             }
 
-            System.out.println("Do you want to play again? (Y/N): ");
-            decision = scanner.next().toLowerCase();
+            do {
+                System.out.println("Do you want to play again? (Y/N): ");
+                decision = scanner.next().toLowerCase();
 
-            switch (decision) {
-                case "y" -> {
-                    bet = 0;
-                    bellCount = 0;
-                    starCount = 0;
-                    watermelonCount = 0;
-                    cherryCount = 0;
-                    lemonCount = 0;
+                switch (decision) {
+                    case "y" -> {
+                        bet = 0;
+                        bellCount = 0;
+                        starCount = 0;
+                        watermelonCount = 0;
+                        cherryCount = 0;
+                        lemonCount = 0;
 
-                    System.out.println();
+                        System.out.println();
+                    }
+                    case "n" -> {
+                        System.out.printf("GAME OVER! Your final balance is %d", balance);
+                        play = false;
+                    }
+                    default -> {
+                        System.out.println("Invalid Entry!");
+                    }
                 }
-                case "n" -> {
-                    System.out.printf("GAME OVER! Your final balance is %d", balance);
-                    play = false;
-                }
-                default -> {
-                    System.out.println("Invalid Entry! Game Over");
-                    play = false;
-                }
-            }
+            } while (!decision.equals("y") && !decision.equals("n"));
 
         }
 
