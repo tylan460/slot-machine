@@ -11,7 +11,7 @@ public class Main {
 
         String[] symbols = { "🔔", "🍒", "🍋", "⭐️", "🍉" };
 
-        int bet;
+        int bet = 0;
         int balance = 100;
         boolean play = true;
         int bellCount = 0;
@@ -33,9 +33,16 @@ public class Main {
                 play = false;
             }
             System.out.printf("Current balance: %d\n", balance);
-            System.out.print("Place your bet amount: ");
-            bet = scanner.nextInt();
-            scanner.nextLine();
+
+            while (bet <= 0) {
+
+                System.out.print("Place your bet amount: ");
+                bet = scanner.nextInt();
+                scanner.nextLine();
+                if (bet <= 0) {
+                    System.out.println("Your Bet cannot be 0 or less");
+                }
+            }
 
             System.out.println("Spinning...");
 
